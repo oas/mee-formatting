@@ -1,0 +1,14 @@
+{
+	"name": "mee-formatting",
+	"description": "Text Formatting for Minecraft: Education Edition",
+	"version": "0.2.0",
+	"dependencies": {
+		"core": "*",
+		"builder": "*"
+	},
+	"files": [
+		"README.md",
+		"main.ts"
+	],
+	"public": true
+}
