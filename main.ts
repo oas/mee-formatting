@@ -1,46 +1,67 @@
 //% block="Text Formatting"
-//% icon=""
+//% icon="\uf035"
 //% color="#e89005"
 namespace formatting {
-	//% block="format style to %style and color to %color of %text"
-	export function format(text: string, style: TextStyle, color: TextColor): string {
+	//% block="change text style of %text to %style"
+	export function formatStyle(text: string, style: TextStyle): string {
 		switch (style) {
+			case TextStyle.NORMAL:
+				return text;
+			case TextStyle.ITALIC:
+				return "§o" + text;
 			case TextStyle.BOLD:
-				text = "§l" + text;
-				break;
+				return "§l" + text;
+			case TextStyle.UNDERLINED:
+				return "§n" + text;
 		}
+	}
 
+	//% block="change text color of %text to %color"
+	export function formatColor(text: string, color: TextColor): string {
 		switch (color) {
-			case TextColor.BLUE:
-				text = "§1" + text;
-				break;
-			case TextColor.GREEN:
-				text = "§2" + text;
-				break;
 			case TextColor.RED:
-				text = "§4" + text;
-				break;
+				return "§4" + text;
 			case TextColor.ORANGE:
-				text = "§6" + text;
-				break;
+				return "§6" + text;
+			case TextColor.YELLOW:
+				return "§e" + text;
+			case TextColor.GREEN:
+				return "§2" + text;
+			case TextColor.BLUE:
+				return "§9" + text;
+			case TextColor.PURPLE:
+				return "§5" + text;
 		}
+	}
 
-		return text;
+	//% block="change text style and color of %text to %style and %color"
+	export function format(text: string, style: TextStyle, color: TextColor): string {
+		return formatColor(formatStyle(text, style), color);
+	}
+
+	export enum TextStyle {
+		//% block=normal
+		NORMAL,
+		//% block=italic
+		ITALIC,
+		//% block=bold
+		BOLD,
+		//% block=underlined
+		UNDERLINED
 	}
 
 	export enum TextColor {
-		//% block=blue
-		BLUE,
-		//% block=green
-		GREEN,
 		//% block=red
 		RED,
 		//% block=orange
 		ORANGE,
-	}
-
-	export enum TextStyle {
-		//% block=bold
-		BOLD
+		//% block=yellow
+		YELLOW,
+		//% block=green
+		GREEN,
+		//% block=blue
+		BLUE,
+		//% block=purple
+		PURPLE
 	}
 }
